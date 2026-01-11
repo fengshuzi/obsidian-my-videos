@@ -1,0 +1,10 @@
+{
+    "id": "obsidian-my-videos",
+    "name": "我的影视",
+    "version": "1.0.0",
+    "minAppVersion": "1.2.8",
+    "description": "基于日记文件的影视观看记录追踪插件，按日期查看观看历史和评论。",
+    "author": "Your Name",
+    "authorUrl": "https://github.com/yourusername",
+    "isDesktopOnly": false
+}
