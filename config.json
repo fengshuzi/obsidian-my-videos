@@ -1,9 +1,10 @@
 {
-    "appName": "我的影视",
+    "appName": "书影音",
     "videoTypes": {
         "movie": "电影",
         "tv": "电视剧",
-        "variety": "综艺"
+        "variety": "综艺",
+        "book": "书籍"
     },
     "journalsPath": "journals"
 }
