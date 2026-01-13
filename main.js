@@ -270,13 +270,13 @@ class VideoConfigModal extends Modal {
     constructor(app, plugin) {
         super(app);
         this.plugin = plugin;
-        this.appName = plugin.config.appName || '我的影视';
+        this.appName = plugin.config.appName || '书影音';
         this.videoTypes = { ...plugin.config.videoTypes };
         this.currentTab = 'basic';
     }
 
     onOpen() {
-        const appName = this.plugin.config.appName || '我的影视';
+        const appName = this.plugin.config.appName || '书影音';
         this.titleEl.setText(`${appName}配置`);
         
         const { contentEl } = this;
@@ -356,10 +356,10 @@ class VideoConfigModal extends Modal {
             type: 'text',
             cls: 'config-text-input',
             value: this.appName,
-            attr: { placeholder: '我的影视', maxlength: '20' }
+            attr: { placeholder: '书影音', maxlength: '20' }
         });
         nameInput.oninput = () => {
-            this.appName = nameInput.value.trim() || '我的影视';
+            this.appName = nameInput.value.trim() || '书影音';
         };
 
         const previewSection = this.contentArea.createDiv('config-section');
@@ -516,7 +516,7 @@ class VideoTrackerView extends ItemView {
     }
 
     getDisplayText() {
-        return this.plugin.config.appName || '我的影视';
+        return this.plugin.config.appName || '书影音';
     }
 
     getIcon() {
@@ -547,7 +547,7 @@ class VideoTrackerView extends ItemView {
     renderHeader(container) {
         const header = container.createDiv('video-header');
         
-        const appName = this.plugin.config.appName || '我的影视';
+        const appName = this.plugin.config.appName || '书影音';
         header.createEl('h2', { text: `🎬 ${appName}`, cls: 'video-title' });
         
         const actions = header.createDiv('video-actions');
@@ -799,14 +799,14 @@ class VideoTrackerView extends ItemView {
 // 主插件类
 class VideoTrackerPlugin extends Plugin {
     async onload() {
-        console.log('加载我的影视插件');
+        console.log('加载书影音插件');
 
         await this.loadConfig();
         this.storage = new VideoStorage(this.app, this.config);
 
         this.registerView(VIDEO_VIEW, (leaf) => new VideoTrackerView(leaf, this));
 
-        const appName = this.config.appName || '我的影视';
+        const appName = this.config.appName || '书影音';
         this.addRibbonIcon('film', appName, () => {
             this.activateView();
         });
@@ -825,7 +825,7 @@ class VideoTrackerPlugin extends Plugin {
     }
 
     async onunload() {
-        console.log('卸载我的影视插件');
+        console.log('卸载书影音插件');
         
         if (this.storage) {
             this.storage.destroy();
@@ -844,7 +844,7 @@ class VideoTrackerPlugin extends Plugin {
                 let needUpdate = false;
                 
                 if (!this.config.appName) {
-                    this.config.appName = "我的影视";
+                    this.config.appName = "书影音";
                     needUpdate = true;
                 }
                 
@@ -864,7 +864,7 @@ class VideoTrackerPlugin extends Plugin {
 
     getDefaultConfig() {
         return {
-            appName: "我的影视",
+            appName: "书影音",
             videoTypes: {
                 "movie": "电影",
                 "tv": "电视剧",
