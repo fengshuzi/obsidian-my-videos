@@ -1,5 +1,13 @@
 const { Plugin, ItemView, Modal, Notice, TFile } = require('obsidian');
 
+// 辅助函数：格式化本地日期为 YYYY-MM-DD（避免 UTC 时区问题）
+function formatLocalDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
 // 影视记录解析器
 class VideoParser {
     constructor(config) {
@@ -58,7 +66,7 @@ class VideoParser {
         
         // 从文件路径提取日期
         const dateMatch = filePath.match(/(\d{4}-\d{2}-\d{2})/);
-        const fileDate = dateMatch ? dateMatch[1] : new Date().toISOString().split('T')[0];
+        const fileDate = dateMatch ? dateMatch[1] : formatLocalDate(new Date());
 
         lines.forEach(line => {
             const lineRecords = this.parseRecord(line, fileDate);
